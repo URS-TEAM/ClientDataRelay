@@ -1,0 +1,105 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+>
+    <SolidColorBrush x:Key="Primary900" Color="#164a92"/>
+    <SolidColorBrush x:Key="Primary800" Color="#1355ba"/>
+    <SolidColorBrush x:Key="Primary700" Color="#0f6be9"/>
+    <SolidColorBrush x:Key="Primary600" Color="#1681fa"/>
+    <SolidColorBrush x:Key="Primary500" Color="#2da1ff"/>
+
+    <!--<Style TargetType="{x:Type Window}">
+        <Setter Property="FontFamily" Value="{StaticResource SequelSans}" />
+    </Style>-->
+    
+    <Style x:Key="H1TxtBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#000"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Margin" Value="0,0,0,4"/>
+    </Style>
+    
+    <Style x:Key="H2TxtBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#000"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Margin" Value="0,0,0,4"/>
+    </Style>
+
+    <Style x:Key="SubtitleTxtBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="#494949"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+    </Style>
+
+    <Style x:Key="H1Run" TargetType="{x:Type Run}">
+        <Setter Property="Foreground" Value="#000"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+    </Style>
+
+    <Style x:Key="H2Run" TargetType="{x:Type Run}">
+        <Setter Property="Foreground" Value="#000"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+    </Style>
+
+    <Style x:Key="SubtitleRun" TargetType="{x:Type Run}">
+        <Setter Property="Foreground" Value="#494949"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+    </Style>
+
+    <Style BasedOn="{StaticResource {x:Type ui:TextBox}}" TargetType="{x:Type ui:TextBox}">
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+    <Style x:Key="PrimaryButton" BasedOn="{StaticResource {x:Type ui:Button}}" TargetType="{x:Type ui:Button}">
+        <Setter Property="Background" Value="{StaticResource Primary700}"/>
+        <Setter Property="MouseOverBackground" Value="{StaticResource Primary600}"/>
+        <Setter Property="PressedBackground" Value="{StaticResource Primary800}"/>
+        <Setter Property="Foreground" Value="#fff"/>
+        <Setter Property="PressedForeground" Value="#fff"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#D2D2D2"/>
+                <Setter Property="Foreground" Value="#a3a3a3"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="SecondaryButton" BasedOn="{StaticResource {x:Type ui:Button}}" TargetType="{x:Type ui:Button}">
+        <Setter Property="Background" Value="#fff"/>
+        <Setter Property="PressedBackground" Value="#f2f2f2"/>
+        <Setter Property="MouseOverBackground" Value="#f2f2f2"/>
+        <Setter Property="Foreground" Value="#0f0f0f"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#ebebeb"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#D2D2D2"/>
+                <Setter Property="Foreground" Value="#a3a3a3"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TertiaryButton" BasedOn="{StaticResource {x:Type ui:Button}}" TargetType="{x:Type ui:Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#0f6be9"/>
+        <Setter Property="Foreground" Value="#0f0f0f"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <ControlTemplate x:Key="validationTemplate">
+        <Grid>
+            <TextBlock Text="!" FontSize="26" Foreground="Red" HorizontalAlignment="Left"/>
+            <AdornedElementPlaceholder/>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

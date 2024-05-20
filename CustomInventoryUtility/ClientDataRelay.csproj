@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\logo-urs-globe.ico" />
+    <None Remove="Assets\logo-urs-globe.png" />
+    <None Remove="Fonts\SequelSans-Bold.ttf" />
+    <None Remove="Fonts\SequelSans-Light.ttf" />
+    <None Remove="Fonts\SequelSans-Medium.ttf" />
+    <None Remove="Fonts\SequelSans-Regular.ttf" />
+    <None Remove="Fonts\SequelSans-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="WPF-UI" Version="3.0.0-preview.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sqlite\Sqlite.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\logo-urs-globe.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\logo-urs-globe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\SequelSans\SequelSans-Bold.ttf" />
+    <Resource Include="Fonts\SequelSans\SequelSans-Regular.ttf" />
+    <Resource Include="Fonts\SequelSans\SequelSans-Light.ttf" />
+    <Resource Include="Fonts\SequelSans\SequelSans-Medium.ttf" />
+    <Resource Include="Fonts\SequelSans\SequelSans-SemiBold.ttf" />
+  </ItemGroup>
+
+</Project>

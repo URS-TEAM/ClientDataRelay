@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientDataRelay", "CustomInventoryUtility\ClientDataRelay.csproj", "{C3B05034-1738-4493-B58F-D43851653CA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sqlite", "Sqlite\Sqlite.csproj", "{0FB134EA-0EC2-42D4-A518-371828059BB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3B05034-1738-4493-B58F-D43851653CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B05034-1738-4493-B58F-D43851653CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B05034-1738-4493-B58F-D43851653CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B05034-1738-4493-B58F-D43851653CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FB134EA-0EC2-42D4-A518-371828059BB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB134EA-0EC2-42D4-A518-371828059BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB134EA-0EC2-42D4-A518-371828059BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB134EA-0EC2-42D4-A518-371828059BB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8D943D6-9E35-4B6B-B857-96A66F59760D}
+	EndGlobalSection
+EndGlobal
