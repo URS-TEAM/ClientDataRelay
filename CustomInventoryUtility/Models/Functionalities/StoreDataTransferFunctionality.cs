@@ -8,6 +8,7 @@ using System.Net;
 using System.Collections.Generic;
 using InventoryUtility.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
 
 namespace InventoryUtility.Models.Functionalities
 {
@@ -35,12 +36,11 @@ namespace InventoryUtility.Models.Functionalities
         public async Task TransferStoreData(DateTime selectedDate)
         {
             StoresDataTransferModel data = await FetchStoreDataFromDB(selectedDate);
-            string resultingJson = JsonConvert.SerializeObject(data);
-
+            string resultingJson = JsonConvert.SerializeObject(data);  
             using (var wb = new WebClient())
             {
                 wb.Headers[HttpRequestHeader.ContentType] = "application/json";
-                string uploadResponse = await wb.UploadStringTaskAsync("https://lv80cgqc-7066.use2.devtunnels.ms/api/Stores", resultingJson);
+                string uploadResponse = await wb.UploadStringTaskAsync("https://localhost:7066/api/Stores", resultingJson);
             }
         }
 
@@ -69,7 +69,6 @@ namespace InventoryUtility.Models.Functionalities
             Task<List<Store>> storeTask = StoreDataFetchService.FetchStores();
             Task<List<Sale>> salesTask = StoreDataFetchService.FetchSalesMadeIn(queryTime);
             Task<List<Summaries.Void>> voidsTask = StoreDataFetchService.FetchVoidsMadeIn(queryTime);
-
             List<Department> departmentList = await StoreDataFetchService.FetchDepartamentList();
             Task<List<DepartmentSale>> departmentSalesTask = StoreDataFetchService.FetchDepartmentSalesMadeIn(departmentList, queryTime);
             Task<List<HourSales>> hoursSalesTask = StoreDataFetchService.FetchHourSalesMadeInDay(queryTime);
@@ -99,7 +98,6 @@ namespace InventoryUtility.Models.Functionalities
             List<TransactionTenderSummary> tenderTotalResult = tendersTask.Result;
             List<ItemSalesSummary> itemsSalesResult = itemsSalesTask.Result;
             List<TransactionEntrySummary> transactionEntriesResult = transactionEntriesTask.Result;
-
             List<TaxSummary> taxesResult = taxesTask.Result;
 
             StoresDataTransferModel storeDataTransferModel = new()
@@ -116,6 +114,7 @@ namespace InventoryUtility.Models.Functionalities
 
                 TaxDetailsSummaries = taxesResult,
             };
+            Console.WriteLine(storeDataTransferModel);
             return storeDataTransferModel;
         }
 

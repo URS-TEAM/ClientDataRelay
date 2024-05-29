@@ -42,6 +42,7 @@ namespace Sqlite
 
             tables.Add("CREATE TABLE IF NOT EXISTS StoreDataTransferExecutions (" +
                          "Id INT IDENTITY(1,1) PRIMARY KEY, "+
+                         "DataBase NVARCHAR(2048) DEFAULT NULL, " +
                          "ExecutionTime INT, " +
                          "TransferType INT DEFAULT 0, " +
                          "Status INT DEFAULT 0, " +
@@ -50,5 +51,5 @@ namespace Sqlite
 
             return tables;
         }
-    }
+    }   
 }

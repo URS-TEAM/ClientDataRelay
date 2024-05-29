@@ -6,6 +6,13 @@ using System.Globalization;
 using System.Threading.Tasks;
 using System;
 using Void = InventoryUtility.Models.Summaries.Void;
+using Sqlite.Models;
+using System.Xml.Linq;
+using Microsoft.VisualBasic;
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
+using ClientDataRelay.Models.Summaries;
+using System.Windows.Media.Animation;
 
 namespace InventoryUtility.Services;
 public class StoreDataFetchService
@@ -30,8 +37,22 @@ public class StoreDataFetchService
     {
         connectionString = @"Data Source=" + DBData.GetServer() + ";Initial Catalog=" + DBData.GetDb() + ";User ID=" +
         DBData.GetUser() + ";Password=" + DBData.GetPass();
+        //SaveDatabaseName();
     }
 
+
+    //public async Task<StoresDataTransferModel> SaveDatabaseName()
+    //{
+
+    //    string uuid = Guid.NewGuid().ToString();
+
+    //    StoresDataTransferModel info = new()
+    //    {
+    //        Name = uuid,
+    //    };
+        
+    //    return null;
+    //}
     public async Task<DateTime?> GetDateTimeAsync()
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
@@ -169,11 +190,12 @@ public class StoreDataFetchService
                 {
                     Department transaction = new Department
                     {
-                        id = reader.GetInt32(0),
+                        Id = reader.GetInt32(0),
                         Name = (string.IsNullOrEmpty(reader.GetString(1)) ? "NO DEPARTMENT" : reader.GetString(1)),
-                        code = reader.GetString(2),
+                        Code = reader.GetString(2),
+                        Time = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
                     };
-
+                    Debug.WriteLine(transaction);
                     transactions.Add(transaction);
                 }
                 return transactions;
@@ -224,7 +246,7 @@ public class StoreDataFetchService
         string date = queryDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         foreach (Department dept in departments)
         {
-            resultingList.AddRange(await FetchDepartmentSaleMadeIn(dept.id, date));
+            resultingList.AddRange(await FetchDepartmentSaleMadeIn(dept.Id, date));
         }
 
         return resultingList;

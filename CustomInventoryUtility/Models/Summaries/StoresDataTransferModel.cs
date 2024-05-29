@@ -8,6 +8,7 @@ namespace InventoryUtility.Models.Summaries;
 public class StoresDataTransferModel
 {
     //DATA FROM SPECIFIC DAY TO SEND TO API
+    //public string StoreName { get; set; }
     public List<Store> Stores { get; set; }
     public List<Sale> Sales { get; set; }
     public List<Void> Voids { get; set; }

@@ -18,14 +18,15 @@ namespace Sqlite
                     command.Connection = db;
                     command.CommandText =
                         "INSERT INTO StoreDataTransferExecutions " +
-                        "(ExecutionTime, TransferType, Status, ErrorMessage) " +
-                        "VALUES (@ExecutionTime, @TransferType, @Status, @ErrorMessage);";
+                        "(ExecutionTime, TransferType, Status, ErrorMessage,Database) " +
+                        "VALUES (@ExecutionTime, @TransferType, @Status, @ErrorMessage,@Database);";
 
                     command.Parameters.AddWithValue("@ExecutionTime", execution.ExecutionTime);
                     command.Parameters.AddWithValue("@TransferType", execution.TransferType);
                     command.Parameters.AddWithValue("@Status", execution.Status);
                     command.Parameters.AddWithValue("@ErrorMessage",
                         string.IsNullOrEmpty(execution.ErrorMessage) ? DBNull.Value : execution.ErrorMessage);
+                    command.Parameters.AddWithValue("@Database", execution.Database);
 
                     await command.ExecuteNonQueryAsync();
                 }
@@ -55,7 +56,8 @@ namespace Sqlite
                                 ExecutionTime = reader.GetInt32(1),
                                 TransferType = reader.GetInt32(2),
                                 Status = reader.GetInt32(3),
-                                ErrorMessage = reader.IsDBNull(4) ? null : reader.GetString(3)
+                                ErrorMessage = reader.IsDBNull(4) ? null : reader.GetString(3),
+                                Database = reader.GetString(5)
                             });
                         }
                     }
@@ -89,7 +91,8 @@ namespace Sqlite
                                 ExecutionTime = reader.GetInt32(1),
                                 TransferType = reader.GetInt32(2),
                                 Status = reader.GetInt32(3),
-                                ErrorMessage = reader.IsDBNull(4) ? null : reader.GetString(3)
+                                ErrorMessage = reader.IsDBNull(4) ? null : reader.GetString(3),
+                                Database = reader.GetString(5)
                             };
                         }
                     }

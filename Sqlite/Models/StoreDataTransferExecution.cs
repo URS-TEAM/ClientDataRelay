@@ -13,6 +13,7 @@ public class StoreDataTransferExecution
     public int TransferType { get; set; }
     public int Status { get; set; }
     public string ErrorMessage { get; set; }
+    public string Database { get; set; }
 }
 
 public enum ExecutionStatus
