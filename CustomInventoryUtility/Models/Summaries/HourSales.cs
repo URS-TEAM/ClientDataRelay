@@ -13,6 +13,7 @@ namespace InventoryUtility.Models.Summaries
         public string InitialHour { get; set; }
         public string FinalHour { get; set; }
         public int TransQuantity { get; set; }
+        public string Time { get; set; }  
     }
     
 }

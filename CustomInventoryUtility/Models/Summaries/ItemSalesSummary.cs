@@ -15,6 +15,7 @@ namespace InventoryUtility.Models.Summaries
         public double Quantity { get; set;}
         public double Total {  get; set; }
         public double Cost { get; set; }
+        public string Time { get; set; }
     }
 
 }

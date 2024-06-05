@@ -8,6 +8,8 @@ using System.Net;
 using System.Collections.Generic;
 using InventoryUtility.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace InventoryUtility.Models.Functionalities
 {
@@ -36,6 +38,7 @@ namespace InventoryUtility.Models.Functionalities
         {
             StoresDataTransferModel data = await FetchStoreDataFromDB(selectedDate);
             string resultingJson = JsonConvert.SerializeObject(data);
+            Debug.WriteLine(resultingJson);
             using (var wb = new WebClient())
             {
                 wb.Headers[HttpRequestHeader.ContentType] = "application/json";

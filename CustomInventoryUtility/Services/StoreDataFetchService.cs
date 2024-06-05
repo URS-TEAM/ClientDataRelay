@@ -255,6 +255,7 @@ public class StoreDataFetchService
                             InitialHour = reader.GetString(1),
                             FinalHour = reader.GetString(2),
                             TransQuantity = reader.GetInt32(3),
+                            Time = date,
                         };
                     }
 
@@ -380,6 +381,7 @@ public class StoreDataFetchService
                         Quantity = reader.GetDouble(4),
                         Total = reader.GetDouble(5),
                         Cost = reader.GetDouble(6),
+                        Time = date,
                     };
 
                     allItemsSales.Add(itemSales);
