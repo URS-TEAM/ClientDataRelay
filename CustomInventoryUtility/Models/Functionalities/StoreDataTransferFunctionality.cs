@@ -36,11 +36,10 @@ namespace InventoryUtility.Models.Functionalities
         {
             StoresDataTransferModel data = await FetchStoreDataFromDB(selectedDate);
             string resultingJson = JsonConvert.SerializeObject(data);
-
             using (var wb = new WebClient())
             {
                 wb.Headers[HttpRequestHeader.ContentType] = "application/json";
-                string uploadResponse = await wb.UploadStringTaskAsync("https://lv80cgqc-7066.use2.devtunnels.ms/api/Stores", resultingJson);
+                string uploadResponse = await wb.UploadStringTaskAsync("https://localhost:7066/api/Stores", resultingJson);
             }
         }
 

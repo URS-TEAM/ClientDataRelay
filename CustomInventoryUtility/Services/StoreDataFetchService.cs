@@ -80,7 +80,7 @@ public class StoreDataFetchService
         return stores;
     }
 
-
+    
     //TOTAL SALES NOW
     public async Task<List<Sale>> FetchSalesMadeIn(DateTime queryDate)
     {
