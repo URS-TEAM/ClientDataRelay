@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientDataRelay.Models.Summaries;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 namespace InventoryUtility.Models.Summaries;
 public class StoresDataTransferModel
 {
-    //DATA FROM SPECIFIC DAY TO SEND TO API
+    //DATA FROM SPECIFIC DAY TO SEND TO API]
+    public List<DatabaseInfo> DatabaseInfos { get; set; }
     public List<Store> Stores { get; set; }
     public List<Sale> Sales { get; set; }
     public List<Void> Voids { get; set; }

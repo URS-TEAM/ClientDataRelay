@@ -10,6 +10,9 @@ using InventoryUtility.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Cryptography;
 using System.Diagnostics;
+using ClientDataRelay.Models.Summaries;
+using System.Xml.Linq;
+using Sqlite;
 
 namespace InventoryUtility.Models.Functionalities
 {
@@ -67,7 +70,8 @@ namespace InventoryUtility.Models.Functionalities
 
         private async Task<StoresDataTransferModel> FetchStoreDataFromDB(DateTime queryTime)
         {
-
+            //DatabaseInfo databaseInfo = await StoreDataFetchService.GenerateUniqueIdAndDbNameAsync();
+            List<DatabaseInfo> databaseInfos = await StoreDataFetchService.GenerateUniqueIdAndDbNameAsync();
             Task<List<Store>> storeTask = StoreDataFetchService.FetchStores();
             Task<List<Sale>> salesTask = StoreDataFetchService.FetchSalesMadeIn(queryTime);
             Task<List<Summaries.Void>> voidsTask = StoreDataFetchService.FetchVoidsMadeIn(queryTime);
@@ -101,7 +105,6 @@ namespace InventoryUtility.Models.Functionalities
             List<TransactionTenderSummary> tenderTotalResult = tendersTask.Result;
             List<ItemSalesSummary> itemsSalesResult = itemsSalesTask.Result;
             List<TransactionEntrySummary> transactionEntriesResult = transactionEntriesTask.Result;
-
             List<TaxSummary> taxesResult = taxesTask.Result;
 
             StoresDataTransferModel storeDataTransferModel = new()
@@ -115,7 +118,7 @@ namespace InventoryUtility.Models.Functionalities
                 TenderTotalSummaries = tenderTotalResult,
                 ItemSalesSummaries = itemsSalesResult,
                 TransactionEntriesSummaries = transactionEntriesResult,
-
+                DatabaseInfos = databaseInfos,
                 TaxDetailsSummaries = taxesResult,
             };
             return storeDataTransferModel;

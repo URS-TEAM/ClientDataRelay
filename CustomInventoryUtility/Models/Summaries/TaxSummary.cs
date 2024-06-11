@@ -12,6 +12,8 @@ namespace InventoryUtility.Models.Summaries
        public string TaxDescription { get; set; }
        public decimal Tax { get; set; }
        public double TotalToTax {  get; set; }
+       public string Time {  get; set; }
+
 
     }
 }

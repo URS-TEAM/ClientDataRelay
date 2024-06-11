@@ -6,6 +6,9 @@ using System.Globalization;
 using System.Threading.Tasks;
 using System;
 using Void = InventoryUtility.Models.Summaries.Void;
+using ClientDataRelay.Models.Summaries;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace InventoryUtility.Services;
 public class StoreDataFetchService
@@ -31,6 +34,24 @@ public class StoreDataFetchService
         connectionString = @"Data Source=" + DBData.GetServer() + ";Initial Catalog=" + DBData.GetDb() + ";User ID=" +
         DBData.GetUser() + ";Password=" + DBData.GetPass();
     }
+    public async Task<List<DatabaseInfo>> GenerateUniqueIdAndDbNameAsync()
+    {
+        List<DatabaseInfo> data = new List<DatabaseInfo>();
+        string dbName = DBData.GetDb();
+        string instance = DBData.GetServer();
+
+        DatabaseInfo databaseInfo = new DatabaseInfo
+        {
+            DbName = dbName,
+            Instance = instance
+        };
+        data.Add(databaseInfo);
+
+        return data;
+    }
+
+
+
 
     public async Task<DateTime?> GetDateTimeAsync()
     {
@@ -462,6 +483,7 @@ public class StoreDataFetchService
                         TaxDescription = reader.GetString(1),
                         Tax = reader.GetDecimal(2),
                         TotalToTax = reader.GetDouble(3),
+                        Time = date
                     };
                     taxes.Add(tax);
                 }
