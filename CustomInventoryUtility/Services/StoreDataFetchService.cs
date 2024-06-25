@@ -9,6 +9,7 @@ using Void = InventoryUtility.Models.Summaries.Void;
 using ClientDataRelay.Models.Summaries;
 using System.Xml;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace InventoryUtility.Services;
 public class StoreDataFetchService
