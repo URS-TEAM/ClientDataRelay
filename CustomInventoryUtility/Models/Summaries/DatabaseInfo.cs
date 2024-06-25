@@ -10,5 +10,6 @@ namespace ClientDataRelay.Models.Summaries
     {
         public string DbName { get; set; }
         public string Instance { get; set; }
+        public string Date { get; set; }  
     }
 }

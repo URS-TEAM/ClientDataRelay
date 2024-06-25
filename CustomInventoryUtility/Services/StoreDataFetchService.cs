@@ -35,16 +35,18 @@ public class StoreDataFetchService
         connectionString = @"Data Source=" + DBData.GetServer() + ";Initial Catalog=" + DBData.GetDb() + ";User ID=" +
         DBData.GetUser() + ";Password=" + DBData.GetPass();
     }
-    public async Task<List<DatabaseInfo>> GenerateUniqueIdAndDbNameAsync()
+    public async Task<List<DatabaseInfo>> GenerateUniqueIdAndDbNameAsync(DateTime selectedDate)
     {
         List<DatabaseInfo> data = new List<DatabaseInfo>();
         string dbName = DBData.GetDb();
         string instance = DBData.GetServer();
+        string date = selectedDate.ToString("yyyy-MM-dd");
 
         DatabaseInfo databaseInfo = new DatabaseInfo
         {
             DbName = dbName,
-            Instance = instance
+            Instance = instance,
+            Date = date,
         };
         data.Add(databaseInfo);
 
@@ -131,8 +133,6 @@ public class StoreDataFetchService
                         RegisterID = reader.GetInt32(6)
                     };
                     sales.Add(sale);
-
-
                 }
             }
         }
@@ -140,7 +140,7 @@ public class StoreDataFetchService
     }
 
 
-    //Employee Voids
+    //Journal 
     public async Task<List<Void>> FetchVoidsMadeIn(DateTime queryDate)
     {
         List<Void> voids = new List<Void>();
@@ -174,6 +174,7 @@ public class StoreDataFetchService
         }
         return voids;
     }
+
 
     //DEPARTMENT LIST
     public async Task<List<Department>> FetchDepartamentList()

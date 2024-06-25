@@ -71,7 +71,7 @@ namespace InventoryUtility.Models.Functionalities
         private async Task<StoresDataTransferModel> FetchStoreDataFromDB(DateTime queryTime)
         {
             //DatabaseInfo databaseInfo = await StoreDataFetchService.GenerateUniqueIdAndDbNameAsync();
-            List<DatabaseInfo> databaseInfos = await StoreDataFetchService.GenerateUniqueIdAndDbNameAsync();
+            List<DatabaseInfo> databaseInfos = await StoreDataFetchService.GenerateUniqueIdAndDbNameAsync(SelectedDate);
             Task<List<Store>> storeTask = StoreDataFetchService.FetchStores();
             Task<List<Sale>> salesTask = StoreDataFetchService.FetchSalesMadeIn(queryTime);
             Task<List<Summaries.Void>> voidsTask = StoreDataFetchService.FetchVoidsMadeIn(queryTime);
